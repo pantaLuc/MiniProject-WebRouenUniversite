@@ -1,6 +1,6 @@
 from django.urls import path
 
-from ressources.views import  CreerAnomalie, CreerLocalisation, CreerRessource, CreerService, GestResponsable, RUDAnomalie, RUDLocalisation, RUDRessource, RUDService, SignalerAnomalie
+from ressources.views import  AdminGestion, CreerAnomalie, CreerLocalisation, CreerRessource, CreerService, GestResponsable, RUDAnomalie, RUDLocalisation, RUDRessource, RUDService, SignalerAnomalie
 
 urlpatterns = [
   path ('ressource/<int:pk>',RUDRessource.as_view()),
@@ -17,5 +17,12 @@ urlpatterns = [
   })),
   path('responsable/anomalie/<int:pk>' , GestResponsable.as_view({
       'get':'anomalieRessource',
-  }))
+  })),
+  path('listuser/' ,AdminGestion.as_view({
+            'get': 'listUtilisateur',
+        })),
+
+path('listServices/' ,AdminGestion.as_view({
+    'get':'listServices',
+})),
 ]

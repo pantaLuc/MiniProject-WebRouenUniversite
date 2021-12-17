@@ -38,18 +38,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites', # 6
-     #application creer localement 
-     'ressources',  #1 
-     'users',
-
+     
      #Application Tierces 
      'rest_framework',#2
      'rest_framework.authtoken', #3
-     #'allauth', # new
+     'allauth', # new
      #'allauth.account', # new
      #'allauth.socialaccount', # new
      'dj_rest_auth', #3
      'dj_rest_auth.registration', # new
+
+     #application creer localement
+     'users', 
+     'ressources',  #1 
+     
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new

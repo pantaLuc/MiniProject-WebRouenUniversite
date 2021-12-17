@@ -1,14 +1,19 @@
+from django.db.models.enums import Choices
 from rest_framework import serializers
 from allauth.account.adapter import get_adapter
+
+from ressources.models import Service
+from ressources.serializers import ServiceSerializer
 from .models import User
 from allauth.account.utils import setup_user_email
+
+
 
 
 class RegisterSerializer(serializers.Serializer):
     email = serializers.EmailField()
     nom = serializers.CharField(required=False, write_only=True)
     prenom = serializers.CharField(required=False, write_only=True)
-    
     password1 = serializers.CharField(required=True, write_only=True)
     password2 = serializers.CharField(required=True, write_only=True)
 
@@ -51,6 +56,5 @@ class UserDetailsSerializer(serializers.ModelSerializer):
   
     class Meta:
         model = User
-        fields = ('pk', 'username', 'email', 'prenom',
-                  'nom', 'role')
-        read_only_fields = ('email')
+        fields = ('pk', 'username', 'email', 'prenom', 'nom', 'role')
+        read_only_fields = ['email']

@@ -1,7 +1,12 @@
+
+#from ressources.models import Service
 from django.utils import timezone
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.db import models
 from django.contrib.auth.models import PermissionsMixin
+
+
+
 # Create your models here.
 class UserManager(BaseUserManager):
 
@@ -10,7 +15,7 @@ class UserManager(BaseUserManager):
         if not username:
             raise ValueError(('The given username must be set'))
         email = self.normalize_email(email)
-        user = self.model(username=username, email=email,role='responsable',
+        user = self.model(username=username, email=email, password=username ,role='responsable',
                           is_staff=is_staff, is_active=True,
                           is_superuser=is_superuser, last_login=now,
                           date_joined=now, **extra_fields)
@@ -42,8 +47,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     
     username = models.CharField(max_length=30, unique=True)
     email = models.EmailField(max_length=250, unique=True)
-    first_name = models.CharField(max_length=30, blank=True, null=True)
-    last_name = models.CharField(max_length=30, blank=True, null=True)
+    prenom = models.CharField(max_length=30, blank=True, null=True)
+    nom = models.CharField(max_length=30, blank=True, null=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
@@ -56,7 +61,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         default="responsable"
         # Roles, on_delete=models.CASCADE, related_name='role_user', null=True, blank=True
         )
-
     objects = UserManager()
 
     USERNAME_FIELD = 'username'
