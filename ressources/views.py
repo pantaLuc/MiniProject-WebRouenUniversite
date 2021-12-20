@@ -5,8 +5,7 @@ from rest_framework import generics, serializers ,viewsets,permissions
 from rest_framework.decorators import permission_classes
 
 from ressources.serializers import AnomalieRessourceSerializers, AnomalieSerializer, LocalisationSerializer, RessourceSerializer, ServiceSerializer
-from users.models import User
-from users.serializers import UserDetailsSerializer
+from users.serializers import UserSerializer
 from .models import Anomalie, AnomalieRessource, Localisation, Ressource, Service
 from rest_framework.response import Response
 
@@ -51,7 +50,7 @@ class SignalerAnomalie(generics.CreateAPIView):
 
 class GestResponsable(viewsets.ViewSet):
     def ressourceResponsable(self , request , pk):
-        serializer = UserDetailsSerializer(request.user)
+        serializer =UserSerializer(request.user)
         if serializer.data['role']=='responsable':
             queryset=Ressource.objects.filter(user=pk).all()
             serializer=RessourceSerializer(queryset,many=True)

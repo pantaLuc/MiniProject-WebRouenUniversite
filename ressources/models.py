@@ -1,7 +1,7 @@
-from users.models import User
+#from users.models import User
 from django.db import models
 from django.db.models.deletion import CASCADE
-#from users.models import User
+
 
 # Create your models here.
 
@@ -29,7 +29,7 @@ class Service(models.Model):
         return self.nomServ
 
 class Ressource(models.Model):
-    user=models.ForeignKey(User,on_delete=models.CASCADE,null=False)
+    #user=models.ForeignKey(User,on_delete=models.CASCADE,null=False)
     nomRessource=models.CharField(max_length=50)
     descriptionRes=models.CharField(max_length=200)
     localisation=models.ForeignKey(Localisation ,on_delete=models.CASCADE)

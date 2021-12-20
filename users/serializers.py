@@ -1,60 +1,45 @@
-from django.db.models.enums import Choices
+from rest_framework import generics, permissions
 from rest_framework import serializers
-from allauth.account.adapter import get_adapter
-
-from ressources.models import Service
-from ressources.serializers import ServiceSerializer
 from .models import User
-from allauth.account.utils import setup_user_email
+
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 
-
-
-class RegisterSerializer(serializers.Serializer):
-    email = serializers.EmailField()
-    nom = serializers.CharField(required=False, write_only=True)
-    prenom = serializers.CharField(required=False, write_only=True)
-    password1 = serializers.CharField(required=True, write_only=True)
-    password2 = serializers.CharField(required=True, write_only=True)
-
-    def validate_password1(self, password):
-        return get_adapter().clean_password(password)
-
-    def validate(self, data):
-        if data['password1'] != data['password2']:
-            raise serializers.ValidationError(
-                ("The two password fields didn't match."))
-        return data
-
-    def custom_signup(self, request, user):
-        pass
-
-    def get_cleaned_data(self):
-        return {
-            'first_name': self.validated_data.get('first_name', ''),
-            'last_name': self.validated_data.get('last_name', ''),
-            'address': self.validated_data.get('address', ''),
-            'user_type': self.validated_data.get('user_type', ''),
-            'password1': self.validated_data.get('password1', ''),
-            'email': self.validated_data.get('email', ''),
-        }
-
-    def save(self, request):
-        adapter = get_adapter()
-        user = adapter.new_user(request)
-        self.cleaned_data = self.get_cleaned_data()
-        adapter.save_user(request, user, self)
-        self.custom_signup(request, user)
-        setup_user_email(request, user, [])
-        return user
-
-        user.save()
-        return user
-
-
-class UserDetailsSerializer(serializers.ModelSerializer):
-  
+# User Serializer
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('pk', 'username', 'email', 'prenom', 'nom', 'role')
-        read_only_fields = ['email']
+        fields = ('id', 'username', 'email', 'service' ,'role')
+
+# Register Serializer
+class RegisterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'email', 'password' ,'service' ,'role')
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        user = get_user_model().objects.create_user(self.validated_data ['username'],  
+        self.validated_data['email'], self.validated_data['password'])
+
+        return user
+''''
+# User Serializer
+class UserSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = User
+    fields = ('id', 'username', 'email')
+'''
+# Change Password
+from rest_framework import serializers
+from django.contrib.auth.models import User
+
+class ChangePasswordSerializer(serializers.Serializer):
+    model = User
+
+    """
+    Serializer for password change endpoint.
+    """
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)

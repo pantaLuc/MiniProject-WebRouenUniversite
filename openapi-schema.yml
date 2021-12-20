@@ -1,0 +1,1439 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /api/ressources/ressource/{id}:
+    get:
+      operationId: RetrieveRessource
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this ressource.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  nomRessource:
+                    type: string
+                    maxLength: 50
+                  descriptionRes:
+                    type: string
+                    maxLength: 200
+                  localisation:
+                    type: integer
+                  services:
+                    type: integer
+                    nullable: true
+                  user:
+                    type: integer
+                required:
+                - nomRessource
+                - descriptionRes
+                - localisation
+                - user
+          description: ''
+    put:
+      operationId: UpdateRessource
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this ressource.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id001
+              properties:
+                nomRessource:
+                  type: string
+                  maxLength: 50
+                descriptionRes:
+                  type: string
+                  maxLength: 200
+                localisation:
+                  type: integer
+                services:
+                  type: integer
+                  nullable: true
+                user:
+                  type: integer
+              required:
+              - nomRessource
+              - descriptionRes
+              - localisation
+              - user
+          application/x-www-form-urlencoded:
+            schema: *id001
+          multipart/form-data:
+            schema: *id001
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  nomRessource:
+                    type: string
+                    maxLength: 50
+                  descriptionRes:
+                    type: string
+                    maxLength: 200
+                  localisation:
+                    type: integer
+                  services:
+                    type: integer
+                    nullable: true
+                  user:
+                    type: integer
+                required:
+                - nomRessource
+                - descriptionRes
+                - localisation
+                - user
+          description: ''
+    patch:
+      operationId: PartialUpdateRessource
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this ressource.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id002
+              properties:
+                nomRessource:
+                  type: string
+                  maxLength: 50
+                descriptionRes:
+                  type: string
+                  maxLength: 200
+                localisation:
+                  type: integer
+                services:
+                  type: integer
+                  nullable: true
+                user:
+                  type: integer
+          application/x-www-form-urlencoded:
+            schema: *id002
+          multipart/form-data:
+            schema: *id002
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  nomRessource:
+                    type: string
+                    maxLength: 50
+                  descriptionRes:
+                    type: string
+                    maxLength: 200
+                  localisation:
+                    type: integer
+                  services:
+                    type: integer
+                    nullable: true
+                  user:
+                    type: integer
+                required:
+                - nomRessource
+                - descriptionRes
+                - localisation
+                - user
+          description: ''
+    delete:
+      operationId: DestroyRessource
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this ressource.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+  /api/ressources/anomalie/{id}:
+    get:
+      operationId: RetrieveAnomalie
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this anomalie.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  nomAnomalie:
+                    type: string
+                    maxLength: 100
+                  descriptionAnomalie:
+                    type: string
+                    maxLength: 100
+                required:
+                - nomAnomalie
+                - descriptionAnomalie
+          description: ''
+    put:
+      operationId: UpdateAnomalie
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this anomalie.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id003
+              properties:
+                nomAnomalie:
+                  type: string
+                  maxLength: 100
+                descriptionAnomalie:
+                  type: string
+                  maxLength: 100
+              required:
+              - nomAnomalie
+              - descriptionAnomalie
+          application/x-www-form-urlencoded:
+            schema: *id003
+          multipart/form-data:
+            schema: *id003
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  nomAnomalie:
+                    type: string
+                    maxLength: 100
+                  descriptionAnomalie:
+                    type: string
+                    maxLength: 100
+                required:
+                - nomAnomalie
+                - descriptionAnomalie
+          description: ''
+    patch:
+      operationId: PartialUpdateAnomalie
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this anomalie.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id004
+              properties:
+                nomAnomalie:
+                  type: string
+                  maxLength: 100
+                descriptionAnomalie:
+                  type: string
+                  maxLength: 100
+          application/x-www-form-urlencoded:
+            schema: *id004
+          multipart/form-data:
+            schema: *id004
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  nomAnomalie:
+                    type: string
+                    maxLength: 100
+                  descriptionAnomalie:
+                    type: string
+                    maxLength: 100
+                required:
+                - nomAnomalie
+                - descriptionAnomalie
+          description: ''
+    delete:
+      operationId: DestroyAnomalie
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this anomalie.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+  /api/ressources/service/{id}:
+    get:
+      operationId: RetrieveService
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this service.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  nomServ:
+                    type: string
+                    maxLength: 50
+                  descriptionService:
+                    type: string
+                    maxLength: 200
+                required:
+                - nomServ
+                - descriptionService
+          description: ''
+    put:
+      operationId: UpdateService
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this service.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id005
+              properties:
+                nomServ:
+                  type: string
+                  maxLength: 50
+                descriptionService:
+                  type: string
+                  maxLength: 200
+              required:
+              - nomServ
+              - descriptionService
+          application/x-www-form-urlencoded:
+            schema: *id005
+          multipart/form-data:
+            schema: *id005
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  nomServ:
+                    type: string
+                    maxLength: 50
+                  descriptionService:
+                    type: string
+                    maxLength: 200
+                required:
+                - nomServ
+                - descriptionService
+          description: ''
+    patch:
+      operationId: PartialUpdateService
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this service.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id006
+              properties:
+                nomServ:
+                  type: string
+                  maxLength: 50
+                descriptionService:
+                  type: string
+                  maxLength: 200
+          application/x-www-form-urlencoded:
+            schema: *id006
+          multipart/form-data:
+            schema: *id006
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  nomServ:
+                    type: string
+                    maxLength: 50
+                  descriptionService:
+                    type: string
+                    maxLength: 200
+                required:
+                - nomServ
+                - descriptionService
+          description: ''
+    delete:
+      operationId: DestroyService
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this service.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+  /api/ressources/localisation/{id}:
+    get:
+      operationId: RetrieveLocalisation
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this localisation.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  code:
+                    type: string
+                    maxLength: 10
+                  libelle:
+                    type: string
+                    maxLength: 255
+                  localisation:
+                    type: string
+                    maxLength: 255
+                required:
+                - code
+                - libelle
+                - localisation
+          description: ''
+    put:
+      operationId: UpdateLocalisation
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this localisation.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id007
+              properties:
+                code:
+                  type: string
+                  maxLength: 10
+                libelle:
+                  type: string
+                  maxLength: 255
+                localisation:
+                  type: string
+                  maxLength: 255
+              required:
+              - code
+              - libelle
+              - localisation
+          application/x-www-form-urlencoded:
+            schema: *id007
+          multipart/form-data:
+            schema: *id007
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  code:
+                    type: string
+                    maxLength: 10
+                  libelle:
+                    type: string
+                    maxLength: 255
+                  localisation:
+                    type: string
+                    maxLength: 255
+                required:
+                - code
+                - libelle
+                - localisation
+          description: ''
+    patch:
+      operationId: PartialUpdateLocalisation
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this localisation.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id008
+              properties:
+                code:
+                  type: string
+                  maxLength: 10
+                libelle:
+                  type: string
+                  maxLength: 255
+                localisation:
+                  type: string
+                  maxLength: 255
+          application/x-www-form-urlencoded:
+            schema: *id008
+          multipart/form-data:
+            schema: *id008
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  code:
+                    type: string
+                    maxLength: 10
+                  libelle:
+                    type: string
+                    maxLength: 255
+                  localisation:
+                    type: string
+                    maxLength: 255
+                required:
+                - code
+                - libelle
+                - localisation
+          description: ''
+    delete:
+      operationId: DestroyLocalisation
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this localisation.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+  /api/ressources/responsable/ressources/{id}:
+    get:
+      operationId: ressourceResponsableGestResponsable
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+  /api/ressources/responsable/anomalie/{id}:
+    get:
+      operationId: anomalieRessourceGestResponsable
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+  /api/ressources/listuser/:
+    get:
+      operationId: listUtilisateurAdminGestion
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+  /api/ressources/listServices/:
+    get:
+      operationId: listServicesAdminGestion
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+  /api/users/logout/:
+    get:
+      operationId: listLogouts
+      description: 'Calls Django logout method and delete the Token object
+
+        assigned to the current User object.
+
+
+        Accepts/Returns nothing.'
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+          description: ''
+    post:
+      operationId: CreateLogout
+      description: 'Calls Django logout method and delete the Token object
+
+        assigned to the current User object.
+
+
+        Accepts/Returns nothing.'
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+  /api/users/user/:
+    get:
+      operationId: RetrieveUserDetails
+      description: 'Reads and updates UserModel fields
+
+        Accepts GET, PUT, PATCH methods.
+
+
+        Default accepted fields: username, first_name, last_name
+
+        Default display fields: pk, username, email, first_name, last_name
+
+        Read-only fields: pk, email
+
+
+        Returns UserModel fields.'
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  pk:
+                    type: integer
+                    readOnly: true
+                  username:
+                    type: string
+                    maxLength: 30
+                  email:
+                    type: string
+                    format: email
+                    readOnly: true
+                  first_name:
+                    type: string
+                    nullable: true
+                    maxLength: 30
+                  last_name:
+                    type: string
+                    nullable: true
+                    maxLength: 30
+                required:
+                - username
+          description: ''
+    put:
+      operationId: UpdateUserDetails
+      description: 'Reads and updates UserModel fields
+
+        Accepts GET, PUT, PATCH methods.
+
+
+        Default accepted fields: username, first_name, last_name
+
+        Default display fields: pk, username, email, first_name, last_name
+
+        Read-only fields: pk, email
+
+
+        Returns UserModel fields.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id009
+              properties:
+                username:
+                  type: string
+                  maxLength: 30
+                first_name:
+                  type: string
+                  nullable: true
+                  maxLength: 30
+                last_name:
+                  type: string
+                  nullable: true
+                  maxLength: 30
+              required:
+              - username
+          application/x-www-form-urlencoded:
+            schema: *id009
+          multipart/form-data:
+            schema: *id009
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  pk:
+                    type: integer
+                    readOnly: true
+                  username:
+                    type: string
+                    maxLength: 30
+                  email:
+                    type: string
+                    format: email
+                    readOnly: true
+                  first_name:
+                    type: string
+                    nullable: true
+                    maxLength: 30
+                  last_name:
+                    type: string
+                    nullable: true
+                    maxLength: 30
+                required:
+                - username
+          description: ''
+    patch:
+      operationId: PartialUpdateUserDetails
+      description: 'Reads and updates UserModel fields
+
+        Accepts GET, PUT, PATCH methods.
+
+
+        Default accepted fields: username, first_name, last_name
+
+        Default display fields: pk, username, email, first_name, last_name
+
+        Read-only fields: pk, email
+
+
+        Returns UserModel fields.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id010
+              properties:
+                username:
+                  type: string
+                  maxLength: 30
+                first_name:
+                  type: string
+                  nullable: true
+                  maxLength: 30
+                last_name:
+                  type: string
+                  nullable: true
+                  maxLength: 30
+          application/x-www-form-urlencoded:
+            schema: *id010
+          multipart/form-data:
+            schema: *id010
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  pk:
+                    type: integer
+                    readOnly: true
+                  username:
+                    type: string
+                    maxLength: 30
+                  email:
+                    type: string
+                    format: email
+                    readOnly: true
+                  first_name:
+                    type: string
+                    nullable: true
+                    maxLength: 30
+                  last_name:
+                    type: string
+                    nullable: true
+                    maxLength: 30
+                required:
+                - username
+          description: ''
+  /api/ressources/ressource:
+    post:
+      operationId: CreateRessource
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id011
+              properties:
+                nomRessource:
+                  type: string
+                  maxLength: 50
+                descriptionRes:
+                  type: string
+                  maxLength: 200
+                localisation:
+                  type: integer
+                services:
+                  type: integer
+                  nullable: true
+                user:
+                  type: integer
+              required:
+              - nomRessource
+              - descriptionRes
+              - localisation
+              - user
+          application/x-www-form-urlencoded:
+            schema: *id011
+          multipart/form-data:
+            schema: *id011
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  nomRessource:
+                    type: string
+                    maxLength: 50
+                  descriptionRes:
+                    type: string
+                    maxLength: 200
+                  localisation:
+                    type: integer
+                  services:
+                    type: integer
+                    nullable: true
+                  user:
+                    type: integer
+                required:
+                - nomRessource
+                - descriptionRes
+                - localisation
+                - user
+          description: ''
+  /api/ressources/anomalie:
+    post:
+      operationId: CreateAnomalie
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id012
+              properties:
+                nomAnomalie:
+                  type: string
+                  maxLength: 100
+                descriptionAnomalie:
+                  type: string
+                  maxLength: 100
+              required:
+              - nomAnomalie
+              - descriptionAnomalie
+          application/x-www-form-urlencoded:
+            schema: *id012
+          multipart/form-data:
+            schema: *id012
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  nomAnomalie:
+                    type: string
+                    maxLength: 100
+                  descriptionAnomalie:
+                    type: string
+                    maxLength: 100
+                required:
+                - nomAnomalie
+                - descriptionAnomalie
+          description: ''
+  /api/ressources/service:
+    post:
+      operationId: CreateService
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id013
+              properties:
+                nomServ:
+                  type: string
+                  maxLength: 50
+                descriptionService:
+                  type: string
+                  maxLength: 200
+              required:
+              - nomServ
+              - descriptionService
+          application/x-www-form-urlencoded:
+            schema: *id013
+          multipart/form-data:
+            schema: *id013
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  nomServ:
+                    type: string
+                    maxLength: 50
+                  descriptionService:
+                    type: string
+                    maxLength: 200
+                required:
+                - nomServ
+                - descriptionService
+          description: ''
+  /api/ressources/localisation:
+    post:
+      operationId: CreateLocalisation
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id014
+              properties:
+                code:
+                  type: string
+                  maxLength: 10
+                libelle:
+                  type: string
+                  maxLength: 255
+                localisation:
+                  type: string
+                  maxLength: 255
+              required:
+              - code
+              - libelle
+              - localisation
+          application/x-www-form-urlencoded:
+            schema: *id014
+          multipart/form-data:
+            schema: *id014
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  code:
+                    type: string
+                    maxLength: 10
+                  libelle:
+                    type: string
+                    maxLength: 255
+                  localisation:
+                    type: string
+                    maxLength: 255
+                required:
+                - code
+                - libelle
+                - localisation
+          description: ''
+  /api/ressources/signalerAnomalie:
+    post:
+      operationId: CreateAnomalieRessource
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id015
+              properties:
+                localisation:
+                  type: integer
+                ressource:
+                  type: integer
+                anomalie:
+                  type: integer
+                est_present:
+                  type: boolean
+              required:
+              - localisation
+              - ressource
+              - anomalie
+              - est_present
+          application/x-www-form-urlencoded:
+            schema: *id015
+          multipart/form-data:
+            schema: *id015
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  localisation:
+                    type: integer
+                  ressource:
+                    type: integer
+                  anomalie:
+                    type: integer
+                  est_present:
+                    type: boolean
+                  detecter_le:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                  corriger_le:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                required:
+                - localisation
+                - ressource
+                - anomalie
+                - est_present
+          description: ''
+  /api/users/password/reset/:
+    post:
+      operationId: CreatePasswordReset
+      description: 'Calls Django Auth PasswordResetForm save method.
+
+
+        Accepts the following POST parameters: email
+
+        Returns the success/fail message.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id016
+              properties:
+                email:
+                  type: string
+                  format: email
+              required:
+              - email
+          application/x-www-form-urlencoded:
+            schema: *id016
+          multipart/form-data:
+            schema: *id016
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  email:
+                    type: string
+                    format: email
+                required:
+                - email
+          description: ''
+  /api/users/password/reset/confirm/:
+    post:
+      operationId: CreatePasswordResetConfirm
+      description: "Password reset e-mail link is confirmed, therefore\nthis resets\
+        \ the user's password.\n\nAccepts the following POST parameters: token, uid,\n\
+        \    new_password1, new_password2\nReturns the success/fail message."
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id017
+              properties:
+                new_password1:
+                  type: string
+                  maxLength: 128
+                new_password2:
+                  type: string
+                  maxLength: 128
+                uid:
+                  type: string
+                token:
+                  type: string
+              required:
+              - new_password1
+              - new_password2
+              - uid
+              - token
+          application/x-www-form-urlencoded:
+            schema: *id017
+          multipart/form-data:
+            schema: *id017
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  new_password1:
+                    type: string
+                    maxLength: 128
+                  new_password2:
+                    type: string
+                    maxLength: 128
+                  uid:
+                    type: string
+                  token:
+                    type: string
+                required:
+                - new_password1
+                - new_password2
+                - uid
+                - token
+          description: ''
+  /api/users/login/:
+    post:
+      operationId: CreateLogin
+      description: 'Check the credentials and return the REST Token
+
+        if the credentials are valid and authenticated.
+
+        Calls Django Auth login method to register User ID
+
+        in Django session framework
+
+
+        Accept the following POST parameters: username, password
+
+        Return the REST Framework Token Object''s key.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id018
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+              required:
+              - password
+          application/x-www-form-urlencoded:
+            schema: *id018
+          multipart/form-data:
+            schema: *id018
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  username:
+                    type: string
+                  email:
+                    type: string
+                    format: email
+                  password:
+                    type: string
+                required:
+                - password
+          description: ''
+  /api/users/password/change/:
+    post:
+      operationId: CreatePasswordChange
+      description: 'Calls Django Auth SetPasswordForm save method.
+
+
+        Accepts the following POST parameters: new_password1, new_password2
+
+        Returns the success/fail message.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id019
+              properties:
+                new_password1:
+                  type: string
+                  maxLength: 128
+                new_password2:
+                  type: string
+                  maxLength: 128
+              required:
+              - new_password1
+              - new_password2
+          application/x-www-form-urlencoded:
+            schema: *id019
+          multipart/form-data:
+            schema: *id019
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  new_password1:
+                    type: string
+                    maxLength: 128
+                  new_password2:
+                    type: string
+                    maxLength: 128
+                required:
+                - new_password1
+                - new_password2
+          description: ''
+  /api/users/token/verify/:
+    post:
+      operationId: CreateTokenVerify
+      description: 'Takes a token and indicates if it is valid.  This view provides
+        no
+
+        information about a token''s fitness for a particular use.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id020
+              properties:
+                token:
+                  type: string
+              required:
+              - token
+          application/x-www-form-urlencoded:
+            schema: *id020
+          multipart/form-data:
+            schema: *id020
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  token:
+                    type: string
+                required:
+                - token
+          description: ''
+  /api/users/token/refresh/:
+    post:
+      operationId: CreateTokenRefresh
+      description: 'Takes a refresh type JSON web token and returns an access type
+        JSON web
+
+        token if the refresh token is valid.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id021
+              properties:
+                refresh:
+                  type: string
+              required:
+              - refresh
+          application/x-www-form-urlencoded:
+            schema: *id021
+          multipart/form-data:
+            schema: *id021
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  refresh:
+                    type: string
+                required:
+                - refresh
+          description: ''
+  /api/users/registration/:
+    post:
+      operationId: CreateRegister
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id022
+              properties:
+                username:
+                  type: string
+                  maxLength: 30
+                  minLength: 1
+                email:
+                  type: string
+                  format: email
+                password1:
+                  type: string
+                  writeOnly: true
+                password2:
+                  type: string
+                  writeOnly: true
+              required:
+              - username
+              - password1
+              - password2
+          application/x-www-form-urlencoded:
+            schema: *id022
+          multipart/form-data:
+            schema: *id022
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  username:
+                    type: string
+                    maxLength: 30
+                    minLength: 1
+                  email:
+                    type: string
+                    format: email
+                required:
+                - username
+          description: ''
+  /api/users/registration/verify-email/:
+    post:
+      operationId: CreateVerifyEmail
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id023
+              properties:
+                key:
+                  type: string
+              required:
+              - key
+          application/x-www-form-urlencoded:
+            schema: *id023
+          multipart/form-data:
+            schema: *id023
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  key:
+                    type: string
+                required:
+                - key
+          description: ''

@@ -42,12 +42,8 @@ INSTALLED_APPS = [
      
      #Application Tierces 
      'rest_framework',#2
-     'rest_framework.authtoken', #3
-     'allauth', # new
-     #'allauth.account', # new
-     #'allauth.socialaccount', # new
-     'dj_rest_auth', #3
-     'dj_rest_auth.registration', # new
+     'knox',
+     'django_rest_passwordreset',
      'corsheaders',
      #application creer localement
      'users', 
@@ -57,26 +53,20 @@ INSTALLED_APPS = [
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new
 SITE_ID = 1 # new
-
-REST_USE_JWT = True
-JWT_AUTH_COOKIE = 'my-app-auth'
-JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
-}
 AUTH_USER_MODEL = 'users.User'
+
+SITE_ID = 1
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ## permission
 REST_FRAMEWORK = {
-'DEFAULT_PERMISSION_CLASSES': [
-'rest_framework.permissions.AllowAny',
-],
-'DEFAULT_AUTHENTICATION_CLASSES': [ # new
-'rest_framework.authentication.SessionAuthentication',
-'rest_framework.authentication.TokenAuthentication', # new
-'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
-],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'knox.auth.TokenAuthentication',
+    ]
 }
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

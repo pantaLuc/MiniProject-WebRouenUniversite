@@ -15,10 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path ,include
+from rest_framework.schemas import get_schema_view # new
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/ressources/' , include('ressources.urls')),
-    path('api/users/', include('dj_rest_auth.urls')), # new
-    path('api/users/registration/',include('dj_rest_auth.registration.urls')),
+    path('api-auth/', include('rest_framework.urls')),
+    path('api/users/', include('users.urls')), # new
+     path('api/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
+    path('openapi', get_schema_view( # new
+    title="Gestionnaire de Maintenance ",
+    description="Une Liste des API utiliser pour construire la solution ",
+    version="1.0.0"
+    ), name='openapi-schema'),
 ]
