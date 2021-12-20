@@ -1,6 +1,9 @@
-#from users.models import User
 from django.db import models
 from django.db.models.deletion import CASCADE
+
+#from users.models import User
+
+
 
 
 # Create your models here.
