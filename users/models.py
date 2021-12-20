@@ -12,7 +12,7 @@ class User(AbstractUser):
     ]
     
     username=models.CharField(max_length=10 , unique=True)
-    service=models.ForeignKey(Ressource , null=True)
+    service=models.ForeignKey(Ressource , on_delete=models.CASCADE, null=True)
     role = models.CharField(
         max_length=13,
         choices=ROLES,
