@@ -18,10 +18,6 @@ urlpatterns = [
   path('responsable/anomalie/<int:pk>' , GestResponsable.as_view({
       'get':'anomalieRessource',
   })),
-  path('listuser/' ,AdminGestion.as_view({
-            'get': 'listUtilisateur',
-        })),
-
 path('listServices/' ,AdminGestion.as_view({
     'get':'listServices',
 })),

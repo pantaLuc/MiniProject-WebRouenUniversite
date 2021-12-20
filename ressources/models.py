@@ -51,4 +51,3 @@ class AnomalieRessource(models.Model):
     detecter_le=models.DateTimeField(auto_now_add=True)
     corriger_le=models.DateTimeField(auto_now_add=True)
     
-    

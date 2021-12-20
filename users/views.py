@@ -1,5 +1,7 @@
 from django.contrib.auth import login
-
+from django.db.models import query
+from rest_framework import views, viewsets
+from .models import User
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as KnoxLoginView
 
@@ -42,6 +44,19 @@ class UserAPI(generics.RetrieveAPIView):
 
     def get_object(self):
         return self.request.user
+
+
+class ListUser(viewsets.ViewSet):
+   
+    def listUtilisateur(self,request):
+        serializer = UserSerializer(request.user)
+        if serializer.data['role']=='admin':
+            queryset= User.objects.all()
+            serializer = UserSerializer(queryset, many=True)
+            return Response(serializer.data)
+        return Response({
+            "message":"vous ne pouvez pas voir tout les responsable "
+        })
 
 from rest_framework import generics, permissions
 
