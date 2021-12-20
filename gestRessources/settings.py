@@ -36,19 +36,22 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites', # 6
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites', # 6
+    
+     #application creer localement
+     'users', 
+    'ressources',  #1 
+     
      
      #Application Tierces 
-     'rest_framework',#2
      'knox',
      'django_rest_passwordreset',
      'corsheaders',
-     #application creer localement
-     'users', 
-     'ressources',  #1 
+     'rest_framework',#2
      
+    
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new

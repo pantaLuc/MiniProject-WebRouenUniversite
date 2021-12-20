@@ -6,7 +6,7 @@ from .models import  AnomalieRessource, Ressource , Localisation ,Service,Anomal
 
 class RessourceSerializer(serializers.ModelSerializer):
     class Meta:
-        fields=('id' , 'nomRessource' , 'descriptionRes' , 'localisation'  ,'services' , 'user')
+        fields=('id' , 'nomRessource' , 'descriptionRes' , 'localisation'   , 'responsable' ,'service')
         model=Ressource
 
 class ServiceSerializer(serializers.ModelSerializer):
