@@ -50,6 +50,7 @@ INSTALLED_APPS = [
      'django_rest_passwordreset',
      'corsheaders',
      'rest_framework',#2
+     'drf_yasg', # new
      
     
 ]

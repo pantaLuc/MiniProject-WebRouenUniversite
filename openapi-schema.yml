@@ -31,16 +31,16 @@ paths:
                     maxLength: 200
                   localisation:
                     type: integer
-                  services:
+                  responsable:
+                    type: integer
+                  service:
                     type: integer
                     nullable: true
-                  user:
-                    type: integer
                 required:
                 - nomRessource
                 - descriptionRes
                 - localisation
-                - user
+                - responsable
           description: ''
     put:
       operationId: UpdateRessource
@@ -65,16 +65,16 @@ paths:
                   maxLength: 200
                 localisation:
                   type: integer
-                services:
+                responsable:
+                  type: integer
+                service:
                   type: integer
                   nullable: true
-                user:
-                  type: integer
               required:
               - nomRessource
               - descriptionRes
               - localisation
-              - user
+              - responsable
           application/x-www-form-urlencoded:
             schema: *id001
           multipart/form-data:
@@ -96,16 +96,16 @@ paths:
                     maxLength: 200
                   localisation:
                     type: integer
-                  services:
+                  responsable:
+                    type: integer
+                  service:
                     type: integer
                     nullable: true
-                  user:
-                    type: integer
                 required:
                 - nomRessource
                 - descriptionRes
                 - localisation
-                - user
+                - responsable
           description: ''
     patch:
       operationId: PartialUpdateRessource
@@ -130,11 +130,11 @@ paths:
                   maxLength: 200
                 localisation:
                   type: integer
-                services:
+                responsable:
+                  type: integer
+                service:
                   type: integer
                   nullable: true
-                user:
-                  type: integer
           application/x-www-form-urlencoded:
             schema: *id002
           multipart/form-data:
@@ -156,16 +156,16 @@ paths:
                     maxLength: 200
                   localisation:
                     type: integer
-                  services:
+                  responsable:
+                    type: integer
+                  service:
                     type: integer
                     nullable: true
-                  user:
-                    type: integer
                 required:
                 - nomRessource
                 - descriptionRes
                 - localisation
-                - user
+                - responsable
           description: ''
     delete:
       operationId: DestroyRessource
@@ -635,17 +635,6 @@ paths:
             application/json:
               schema: {}
           description: ''
-  /api/ressources/listuser/:
-    get:
-      operationId: listUtilisateurAdminGestion
-      description: ''
-      parameters: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema: {}
-          description: ''
   /api/ressources/listServices/:
     get:
       operationId: listServicesAdminGestion
@@ -657,210 +646,45 @@ paths:
             application/json:
               schema: {}
           description: ''
-  /api/users/logout/:
+  /api/users/user/:
     get:
-      operationId: listLogouts
-      description: 'Calls Django logout method and delete the Token object
-
-        assigned to the current User object.
-
-
-        Accepts/Returns nothing.'
+      operationId: RetrieveUser
+      description: ''
       parameters: []
       responses:
         '200':
           content:
             application/json:
               schema:
-                type: array
-                items: {}
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  username:
+                    type: string
+                    maxLength: 10
+                  email:
+                    type: string
+                    format: email
+                    maxLength: 254
+                  role:
+                    enum:
+                    - admin
+                    - responsable
+                    nullable: true
+                required:
+                - username
           description: ''
-    post:
-      operationId: CreateLogout
-      description: 'Calls Django logout method and delete the Token object
-
-        assigned to the current User object.
-
-
-        Accepts/Returns nothing.'
+  /api/users/listuser/:
+    get:
+      operationId: listUtilisateurListUser
+      description: ''
       parameters: []
       responses:
         '200':
           content:
             application/json:
               schema: {}
-          description: ''
-  /api/users/user/:
-    get:
-      operationId: RetrieveUserDetails
-      description: 'Reads and updates UserModel fields
-
-        Accepts GET, PUT, PATCH methods.
-
-
-        Default accepted fields: username, first_name, last_name
-
-        Default display fields: pk, username, email, first_name, last_name
-
-        Read-only fields: pk, email
-
-
-        Returns UserModel fields.'
-      parameters: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                properties:
-                  pk:
-                    type: integer
-                    readOnly: true
-                  username:
-                    type: string
-                    maxLength: 30
-                  email:
-                    type: string
-                    format: email
-                    readOnly: true
-                  first_name:
-                    type: string
-                    nullable: true
-                    maxLength: 30
-                  last_name:
-                    type: string
-                    nullable: true
-                    maxLength: 30
-                required:
-                - username
-          description: ''
-    put:
-      operationId: UpdateUserDetails
-      description: 'Reads and updates UserModel fields
-
-        Accepts GET, PUT, PATCH methods.
-
-
-        Default accepted fields: username, first_name, last_name
-
-        Default display fields: pk, username, email, first_name, last_name
-
-        Read-only fields: pk, email
-
-
-        Returns UserModel fields.'
-      parameters: []
-      requestBody:
-        content:
-          application/json:
-            schema: &id009
-              properties:
-                username:
-                  type: string
-                  maxLength: 30
-                first_name:
-                  type: string
-                  nullable: true
-                  maxLength: 30
-                last_name:
-                  type: string
-                  nullable: true
-                  maxLength: 30
-              required:
-              - username
-          application/x-www-form-urlencoded:
-            schema: *id009
-          multipart/form-data:
-            schema: *id009
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                properties:
-                  pk:
-                    type: integer
-                    readOnly: true
-                  username:
-                    type: string
-                    maxLength: 30
-                  email:
-                    type: string
-                    format: email
-                    readOnly: true
-                  first_name:
-                    type: string
-                    nullable: true
-                    maxLength: 30
-                  last_name:
-                    type: string
-                    nullable: true
-                    maxLength: 30
-                required:
-                - username
-          description: ''
-    patch:
-      operationId: PartialUpdateUserDetails
-      description: 'Reads and updates UserModel fields
-
-        Accepts GET, PUT, PATCH methods.
-
-
-        Default accepted fields: username, first_name, last_name
-
-        Default display fields: pk, username, email, first_name, last_name
-
-        Read-only fields: pk, email
-
-
-        Returns UserModel fields.'
-      parameters: []
-      requestBody:
-        content:
-          application/json:
-            schema: &id010
-              properties:
-                username:
-                  type: string
-                  maxLength: 30
-                first_name:
-                  type: string
-                  nullable: true
-                  maxLength: 30
-                last_name:
-                  type: string
-                  nullable: true
-                  maxLength: 30
-          application/x-www-form-urlencoded:
-            schema: *id010
-          multipart/form-data:
-            schema: *id010
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                properties:
-                  pk:
-                    type: integer
-                    readOnly: true
-                  username:
-                    type: string
-                    maxLength: 30
-                  email:
-                    type: string
-                    format: email
-                    readOnly: true
-                  first_name:
-                    type: string
-                    nullable: true
-                    maxLength: 30
-                  last_name:
-                    type: string
-                    nullable: true
-                    maxLength: 30
-                required:
-                - username
           description: ''
   /api/ressources/ressource:
     post:
@@ -870,7 +694,7 @@ paths:
       requestBody:
         content:
           application/json:
-            schema: &id011
+            schema: &id009
               properties:
                 nomRessource:
                   type: string
@@ -880,20 +704,20 @@ paths:
                   maxLength: 200
                 localisation:
                   type: integer
-                services:
+                responsable:
+                  type: integer
+                service:
                   type: integer
                   nullable: true
-                user:
-                  type: integer
               required:
               - nomRessource
               - descriptionRes
               - localisation
-              - user
+              - responsable
           application/x-www-form-urlencoded:
-            schema: *id011
+            schema: *id009
           multipart/form-data:
-            schema: *id011
+            schema: *id009
       responses:
         '200':
           content:
@@ -911,16 +735,16 @@ paths:
                     maxLength: 200
                   localisation:
                     type: integer
-                  services:
+                  responsable:
+                    type: integer
+                  service:
                     type: integer
                     nullable: true
-                  user:
-                    type: integer
                 required:
                 - nomRessource
                 - descriptionRes
                 - localisation
-                - user
+                - responsable
           description: ''
   /api/ressources/anomalie:
     post:
@@ -930,7 +754,7 @@ paths:
       requestBody:
         content:
           application/json:
-            schema: &id012
+            schema: &id010
               properties:
                 nomAnomalie:
                   type: string
@@ -942,9 +766,9 @@ paths:
               - nomAnomalie
               - descriptionAnomalie
           application/x-www-form-urlencoded:
-            schema: *id012
+            schema: *id010
           multipart/form-data:
-            schema: *id012
+            schema: *id010
       responses:
         '200':
           content:
@@ -972,7 +796,7 @@ paths:
       requestBody:
         content:
           application/json:
-            schema: &id013
+            schema: &id011
               properties:
                 nomServ:
                   type: string
@@ -984,9 +808,9 @@ paths:
               - nomServ
               - descriptionService
           application/x-www-form-urlencoded:
-            schema: *id013
+            schema: *id011
           multipart/form-data:
-            schema: *id013
+            schema: *id011
       responses:
         '200':
           content:
@@ -1014,7 +838,7 @@ paths:
       requestBody:
         content:
           application/json:
-            schema: &id014
+            schema: &id012
               properties:
                 code:
                   type: string
@@ -1030,9 +854,9 @@ paths:
               - libelle
               - localisation
           application/x-www-form-urlencoded:
-            schema: *id014
+            schema: *id012
           multipart/form-data:
-            schema: *id014
+            schema: *id012
       responses:
         '200':
           content:
@@ -1064,7 +888,7 @@ paths:
       requestBody:
         content:
           application/json:
-            schema: &id015
+            schema: &id013
               properties:
                 localisation:
                   type: integer
@@ -1080,9 +904,9 @@ paths:
               - anomalie
               - est_present
           application/x-www-form-urlencoded:
-            schema: *id015
+            schema: *id013
           multipart/form-data:
-            schema: *id015
+            schema: *id013
       responses:
         '200':
           content:
@@ -1114,20 +938,176 @@ paths:
                 - anomalie
                 - est_present
           description: ''
-  /api/users/password/reset/:
+  /api/users/register/:
     post:
-      operationId: CreatePasswordReset
-      description: 'Calls Django Auth PasswordResetForm save method.
+      operationId: CreateRegister
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id014
+              properties:
+                username:
+                  type: string
+                  maxLength: 10
+                email:
+                  type: string
+                  format: email
+                  maxLength: 254
+                password:
+                  type: string
+                  writeOnly: true
+                  maxLength: 128
+                role:
+                  enum:
+                  - admin
+                  - responsable
+                  nullable: true
+              required:
+              - username
+              - password
+          application/x-www-form-urlencoded:
+            schema: *id014
+          multipart/form-data:
+            schema: *id014
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  username:
+                    type: string
+                    maxLength: 10
+                  email:
+                    type: string
+                    format: email
+                    maxLength: 254
+                  role:
+                    enum:
+                    - admin
+                    - responsable
+                    nullable: true
+                required:
+                - username
+          description: ''
+  /api/users/login/:
+    post:
+      operationId: CreateLoginAPI
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+  /api/users/logout/:
+    post:
+      operationId: CreateLogout
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+  /api/users/logoutall/:
+    post:
+      operationId: CreateLogoutAll
+      description: 'Log the user out of all sessions
 
-
-        Accepts the following POST parameters: email
-
-        Returns the success/fail message.'
+        I.E. deletes all auth tokens for the user'
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+  /api/password_reset/validate_token/:
+    post:
+      operationId: CreateToken
+      description: An Api View which provides a method to verify that a token is valid
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id015
+              properties:
+                token:
+                  type: string
+              required:
+              - token
+          application/x-www-form-urlencoded:
+            schema: *id015
+          multipart/form-data:
+            schema: *id015
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  token:
+                    type: string
+                required:
+                - token
+          description: ''
+  /api/password_reset/confirm/:
+    post:
+      operationId: CreatePasswordToken
+      description: An Api View which provides a method to reset a password based on
+        a unique token
       parameters: []
       requestBody:
         content:
           application/json:
             schema: &id016
+              properties:
+                password:
+                  type: string
+                token:
+                  type: string
+              required:
+              - password
+              - token
+          application/x-www-form-urlencoded:
+            schema: *id016
+          multipart/form-data:
+            schema: *id016
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  password:
+                    type: string
+                  token:
+                    type: string
+                required:
+                - password
+                - token
+          description: ''
+  /api/password_reset/:
+    post:
+      operationId: CreateEmail
+      description: 'An Api View which provides a method to request a password reset
+        token based on an e-mail address
+
+
+        Sends a signal reset_password_token_created when a reset token was created'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id017
               properties:
                 email:
                   type: string
@@ -1135,9 +1115,9 @@ paths:
               required:
               - email
           application/x-www-form-urlencoded:
-            schema: *id016
+            schema: *id017
           multipart/form-data:
-            schema: *id016
+            schema: *id017
       responses:
         '200':
           content:
@@ -1150,89 +1130,23 @@ paths:
                 required:
                 - email
           description: ''
-  /api/users/password/reset/confirm/:
-    post:
-      operationId: CreatePasswordResetConfirm
-      description: "Password reset e-mail link is confirmed, therefore\nthis resets\
-        \ the user's password.\n\nAccepts the following POST parameters: token, uid,\n\
-        \    new_password1, new_password2\nReturns the success/fail message."
-      parameters: []
-      requestBody:
-        content:
-          application/json:
-            schema: &id017
-              properties:
-                new_password1:
-                  type: string
-                  maxLength: 128
-                new_password2:
-                  type: string
-                  maxLength: 128
-                uid:
-                  type: string
-                token:
-                  type: string
-              required:
-              - new_password1
-              - new_password2
-              - uid
-              - token
-          application/x-www-form-urlencoded:
-            schema: *id017
-          multipart/form-data:
-            schema: *id017
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                properties:
-                  new_password1:
-                    type: string
-                    maxLength: 128
-                  new_password2:
-                    type: string
-                    maxLength: 128
-                  uid:
-                    type: string
-                  token:
-                    type: string
-                required:
-                - new_password1
-                - new_password2
-                - uid
-                - token
-          description: ''
-  /api/users/login/:
-    post:
-      operationId: CreateLogin
-      description: 'Check the credentials and return the REST Token
-
-        if the credentials are valid and authenticated.
-
-        Calls Django Auth login method to register User ID
-
-        in Django session framework
-
-
-        Accept the following POST parameters: username, password
-
-        Return the REST Framework Token Object''s key.'
+  /api/users/change-password/:
+    put:
+      operationId: UpdateChangePassword
+      description: An endpoint for changing password.
       parameters: []
       requestBody:
         content:
           application/json:
             schema: &id018
               properties:
-                username:
+                old_password:
                   type: string
-                email:
-                  type: string
-                  format: email
-                password:
+                new_password:
                   type: string
               required:
-              - password
+              - old_password
+              - new_password
           application/x-www-form-urlencoded:
             schema: *id018
           multipart/form-data:
@@ -1243,40 +1157,27 @@ paths:
             application/json:
               schema:
                 properties:
-                  username:
+                  old_password:
                     type: string
-                  email:
-                    type: string
-                    format: email
-                  password:
+                  new_password:
                     type: string
                 required:
-                - password
+                - old_password
+                - new_password
           description: ''
-  /api/users/password/change/:
-    post:
-      operationId: CreatePasswordChange
-      description: 'Calls Django Auth SetPasswordForm save method.
-
-
-        Accepts the following POST parameters: new_password1, new_password2
-
-        Returns the success/fail message.'
+    patch:
+      operationId: PartialUpdateChangePassword
+      description: An endpoint for changing password.
       parameters: []
       requestBody:
         content:
           application/json:
             schema: &id019
               properties:
-                new_password1:
+                old_password:
                   type: string
-                  maxLength: 128
-                new_password2:
+                new_password:
                   type: string
-                  maxLength: 128
-              required:
-              - new_password1
-              - new_password2
           application/x-www-form-urlencoded:
             schema: *id019
           multipart/form-data:
@@ -1287,153 +1188,11 @@ paths:
             application/json:
               schema:
                 properties:
-                  new_password1:
+                  old_password:
                     type: string
-                    maxLength: 128
-                  new_password2:
-                    type: string
-                    maxLength: 128
-                required:
-                - new_password1
-                - new_password2
-          description: ''
-  /api/users/token/verify/:
-    post:
-      operationId: CreateTokenVerify
-      description: 'Takes a token and indicates if it is valid.  This view provides
-        no
-
-        information about a token''s fitness for a particular use.'
-      parameters: []
-      requestBody:
-        content:
-          application/json:
-            schema: &id020
-              properties:
-                token:
-                  type: string
-              required:
-              - token
-          application/x-www-form-urlencoded:
-            schema: *id020
-          multipart/form-data:
-            schema: *id020
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                properties:
-                  token:
+                  new_password:
                     type: string
                 required:
-                - token
-          description: ''
-  /api/users/token/refresh/:
-    post:
-      operationId: CreateTokenRefresh
-      description: 'Takes a refresh type JSON web token and returns an access type
-        JSON web
-
-        token if the refresh token is valid.'
-      parameters: []
-      requestBody:
-        content:
-          application/json:
-            schema: &id021
-              properties:
-                refresh:
-                  type: string
-              required:
-              - refresh
-          application/x-www-form-urlencoded:
-            schema: *id021
-          multipart/form-data:
-            schema: *id021
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                properties:
-                  refresh:
-                    type: string
-                required:
-                - refresh
-          description: ''
-  /api/users/registration/:
-    post:
-      operationId: CreateRegister
-      description: ''
-      parameters: []
-      requestBody:
-        content:
-          application/json:
-            schema: &id022
-              properties:
-                username:
-                  type: string
-                  maxLength: 30
-                  minLength: 1
-                email:
-                  type: string
-                  format: email
-                password1:
-                  type: string
-                  writeOnly: true
-                password2:
-                  type: string
-                  writeOnly: true
-              required:
-              - username
-              - password1
-              - password2
-          application/x-www-form-urlencoded:
-            schema: *id022
-          multipart/form-data:
-            schema: *id022
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                properties:
-                  username:
-                    type: string
-                    maxLength: 30
-                    minLength: 1
-                  email:
-                    type: string
-                    format: email
-                required:
-                - username
-          description: ''
-  /api/users/registration/verify-email/:
-    post:
-      operationId: CreateVerifyEmail
-      description: ''
-      parameters: []
-      requestBody:
-        content:
-          application/json:
-            schema: &id023
-              properties:
-                key:
-                  type: string
-              required:
-              - key
-          application/x-www-form-urlencoded:
-            schema: *id023
-          multipart/form-data:
-            schema: *id023
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                properties:
-                  key:
-                    type: string
-                required:
-                - key
+                - old_password
+                - new_password
           description: ''
