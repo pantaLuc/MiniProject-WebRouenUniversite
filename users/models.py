@@ -2,9 +2,7 @@ from __future__ import annotations
 from django.contrib.auth.models import AbstractUser, UserManager
 from django.db import models
 from django.db.models.deletion import CASCADE
-from ressources.models  import Ressource, Service 
 
-   
 class User(AbstractUser):
     ROLES = [
         ('admin', 'admin'),
@@ -12,6 +10,7 @@ class User(AbstractUser):
     ]
     
     username=models.CharField(max_length=10 , unique=True)
+  
     role = models.CharField(
         max_length=13,
         choices=ROLES,
