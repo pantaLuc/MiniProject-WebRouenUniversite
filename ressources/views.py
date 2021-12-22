@@ -49,7 +49,18 @@ class ListLocalisation(generics.ListAPIView):
 class SignalerAnomalie(generics.CreateAPIView):
     queryset=AnomalieRessource.objects.all()
     serializer_class=AnomalieRessourceSerializers
-    
+class RessourceLocalisation(viewsets.ViewSet):
+    def get(self ,request ,pk):
+        queryset=Ressource.objects.filter(localisation=pk).all()
+        if queryset.exists():
+            serializer=RessourceSerializer(queryset,many=True)
+            return Response(serializer.data)
+        return Response({
+            "message":"cette Localisation n' a pas de resoource ou n' existe pas"
+        })
+
+
+            
 
 class GestResponsable(viewsets.ViewSet):
     def ressourceResponsable(self , request , pk):
