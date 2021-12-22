@@ -13,7 +13,7 @@ from django.db.models.deletion import CASCADE
 class Localisation(models.Model):
     code = models.CharField(max_length=10, unique = True)
     libelle = models.CharField(max_length=255)
-    localisation = models.CharField(max_length=255)
+    description= models.CharField(max_length=255)
     def __str__(self):
         return self.code
 
@@ -27,9 +27,8 @@ class Anomalie(models.Model):
 class Service(models.Model):
     nomServ=models.CharField(max_length=50)
     descriptionService=models.CharField(max_length=200)
-    responsables= models.ManyToManyField('users.User')
     creer_le=models.DateTimeField(auto_now_add=True)
-
+    responsables=models.ManyToManyField('users.User')
     
     def __str__(self):
         return self.nomServ

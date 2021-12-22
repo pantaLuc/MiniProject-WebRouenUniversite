@@ -43,7 +43,9 @@ class CreerLocalisation(generics.CreateAPIView):
 class RUDLocalisation(generics.RetrieveUpdateDestroyAPIView):
     queryset=Localisation.objects.all()
     serializer_class=LocalisationSerializer
-
+class ListLocalisation(generics.ListAPIView):
+    queryset=Localisation.objects.all()
+    serializer_class=LocalisationSerializer
 class SignalerAnomalie(generics.CreateAPIView):
     queryset=AnomalieRessource.objects.all()
     serializer_class=AnomalieRessourceSerializers
