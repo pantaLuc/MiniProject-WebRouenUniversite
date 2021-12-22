@@ -11,7 +11,7 @@ class RessourceSerializer(serializers.ModelSerializer):
 
 class ServiceSerializer(serializers.ModelSerializer):
     class Meta :
-        fields=('id' ,'nomServ' , 'descriptionService')
+        fields=('id' ,'nomServ' , 'descriptionService', 'creer_le' ,'responsables')
         model=Service
 class AnomalieSerializer(serializers.ModelSerializer):
     class Meta:

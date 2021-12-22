@@ -27,6 +27,9 @@ class Anomalie(models.Model):
 class Service(models.Model):
     nomServ=models.CharField(max_length=50)
     descriptionService=models.CharField(max_length=200)
+    responsables= models.ManyToManyField('users.User')
+    creer_le=models.DateTimeField(auto_now_add=True)
+
     
     def __str__(self):
         return self.nomServ
