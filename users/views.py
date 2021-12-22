@@ -1,6 +1,6 @@
 from django.contrib.auth import login
 from django.db.models import query
-from rest_framework import views, viewsets
+from rest_framework import serializers, views, viewsets
 from .models import User
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as KnoxLoginView
@@ -46,18 +46,21 @@ class UserAPI(generics.RetrieveAPIView):
         return self.request.user
 
 
-class ListUser(viewsets.ViewSet):
+class ListUser(generics.ListAPIView):
+
+    queryset=User.objects.all()
+    serializer_class=UserSerializer
    
-    def listUtilisateur(self,request):
+    '''def listUtilisateur(self,request):
         #serializer = UserSerializer(request.user)
         #if serializer.data['role']=='admin':
         queryset= User.objects.all()
         serializer = UserSerializer(queryset, many=True)
         return Response(serializer.data)
-        '''return Response({
+        return Response({
             "message":"vous ne pouvez pas voir tout les responsable "
         })'''
-
+         
 from rest_framework import generics, permissions
 
 # Change Password
