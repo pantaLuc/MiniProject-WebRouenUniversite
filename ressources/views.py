@@ -66,14 +66,14 @@ class GestResponsable(viewsets.ViewSet):
 class AdminGestion(viewsets.ViewSet):
      
      def listServices(self ,request):
-        serializer = UserSerializer(request.user)
-        if serializer.data['role']=='admin':
-            queryset=Service.objects.all()
-            serializer=ServiceSerializer(queryset ,many=True)
-            return Response(serializer.data)
-        return Response({
+        #serializer = UserSerializer(request.user)
+        #if serializer.data['role']=='admin':
+        queryset=Service.objects.all()
+        serializer=ServiceSerializer(queryset ,many=True)
+        return Response(serializer.data)
+        '''return Response({
             "message":"Vous ne pouvez pas voir tout les services "
-        })
+        })'''
      def listUserServices(self , request):
         serializers=UserSerializer(request.user)
         if serializers.data['role']=='admin':

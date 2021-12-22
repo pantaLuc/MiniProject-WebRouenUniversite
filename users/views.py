@@ -49,14 +49,14 @@ class UserAPI(generics.RetrieveAPIView):
 class ListUser(viewsets.ViewSet):
    
     def listUtilisateur(self,request):
-        serializer = UserSerializer(request.user)
-        if serializer.data['role']=='admin':
-            queryset= User.objects.all()
-            serializer = UserSerializer(queryset, many=True)
-            return Response(serializer.data)
-        return Response({
+        #serializer = UserSerializer(request.user)
+        #if serializer.data['role']=='admin':
+        queryset= User.objects.all()
+        serializer = UserSerializer(queryset, many=True)
+        return Response(serializer.data)
+        '''return Response({
             "message":"vous ne pouvez pas voir tout les responsable "
-        })
+        })'''
 
 from rest_framework import generics, permissions
 
