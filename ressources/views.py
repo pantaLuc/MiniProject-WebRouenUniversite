@@ -51,14 +51,14 @@ class SignalerAnomalie(generics.CreateAPIView):
 
 class GestResponsable(viewsets.ViewSet):
     def ressourceResponsable(self , request , pk):
-        serializer =UserSerializer(request.user)
-        if serializer.data['role']=='responsable':
-            queryset=Ressource.objects.filter(user=pk).all()
-            serializer=RessourceSerializer(queryset,many=True)
-            return Response(serializer.data)
-        return Response({
+        #serializer =UserSerializer(request.user)
+        #if serializer.data['role']=='responsable':
+        queryset=Ressource.objects.filter(user=pk).all()
+        serializer=RessourceSerializer(queryset,many=True)
+        return Response(serializer.data)
+    '''return Response({
             "message":"Vous n'etes pas autoriser a voir ces ressources"
-        })
+        })'''
     def anomalieRessource(self ,request ,pk):
         queryset=AnomalieRessource.objects.filter(ressource=pk)
         serializers=AnomalieRessourceSerializers(queryset ,many=True)
