@@ -48,7 +48,7 @@ class UserAPI(generics.RetrieveAPIView):
 
 class ListUser(generics.ListAPIView):
 
-    queryset=User.objects.all()
+    queryset=User.objects.filter(role="responsable").all()
     serializer_class=UserSerializer
    
     '''def listUtilisateur(self,request):
