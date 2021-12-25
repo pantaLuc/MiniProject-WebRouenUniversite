@@ -13,7 +13,6 @@ from rest_framework.response import Response
 # Create your views here.
 
 class CreerRessource(generics.CreateAPIView):
-    permission_classes = (permissions.IsAuthenticated)
     queryset=Ressource.objects.all()
     serializer_class=RessourceSerializer
 
