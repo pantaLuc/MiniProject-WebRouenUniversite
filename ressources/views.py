@@ -2,7 +2,7 @@ from django.db.models import query
 from django.http import response
 from django.shortcuts import render
 from rest_framework import generics, serializers ,viewsets,permissions
-from rest_framework.decorators import permission_classes
+from rest_framework.decorators import api_view, permission_classes
 
 from ressources.serializers import AnomalieRessourceSerializers, AnomalieSerializer, LocalisationSerializer, RessourceSerializer, ServiceSerializer
 from users.models import User
@@ -19,6 +19,11 @@ class CreerRessource(generics.CreateAPIView):
 class RUDRessource(generics.RetrieveUpdateDestroyAPIView):
     queryset=Ressource.objects.all()
     serializer_class=RessourceSerializer
+class ListRessource(viewsets.ViewSet):
+    def get(self ,request):
+        queryset=Ressource.objects.all()
+        serializer=RessourceSerializer(queryset ,many=True)
+        return Response(serializer.data)
 
 class CreerAnomalie(generics.CreateAPIView):
     queryset=Anomalie.objects.all()
