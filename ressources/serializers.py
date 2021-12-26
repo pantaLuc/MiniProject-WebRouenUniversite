@@ -24,5 +24,5 @@ class LocalisationSerializer(serializers.ModelSerializer):
            
 class AnomalieRessourceSerializers(serializers.ModelSerializer):
     class Meta:
-        fields=('id','localisation' ,'ressource','anomalie', 'est_present' ,'detecter_le','corriger_le')
+        fields=('id','localisation' ,'ressource','anomalie' ,'detecter_le','corriger_le', 'etat','nombreSignalement')
         model=AnomalieRessource

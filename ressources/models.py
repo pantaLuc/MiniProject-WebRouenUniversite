@@ -40,9 +40,21 @@ class Ressource(models.Model):
         return self.nomRessource
 
 class AnomalieRessource(models.Model):
+    ETAT = [
+        ('present', 'present'),
+        ('En cours de traitement', 'En cours de traitement'),
+        ('terminé' , 'terminé')
+    ]
     ressource=models.ForeignKey(Ressource ,on_delete=models.CASCADE)
     anomalie=models.ForeignKey(Anomalie , on_delete=models.CASCADE)
-    est_present=models.BooleanField(null=False)
+    etat = models.CharField(
+        max_length=30,
+        choices=ETAT,
+        null=False, 
+        blank=True,
+        default="present"
+        )
+    nombreSignalement=models.IntegerField(default=0)
     localisation=models.ForeignKey(Localisation ,on_delete=models.CASCADE)
     detecter_le=models.DateTimeField(auto_now_add=True)
     corriger_le=models.DateTimeField(auto_now_add=True)

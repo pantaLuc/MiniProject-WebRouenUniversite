@@ -16,6 +16,8 @@ class CreerRessource(generics.CreateAPIView):
     queryset=Ressource.objects.all()
     serializer_class=RessourceSerializer
 
+
+    
 class RUDRessource(generics.RetrieveUpdateDestroyAPIView):
     queryset=Ressource.objects.all()
     serializer_class=RessourceSerializer
@@ -50,9 +52,46 @@ class RUDLocalisation(generics.RetrieveUpdateDestroyAPIView):
 class ListLocalisation(generics.ListAPIView):
     queryset=Localisation.objects.all()
     serializer_class=LocalisationSerializer
+
 class SignalerAnomalie(generics.CreateAPIView):
-    queryset=AnomalieRessource.objects.all()
+    query=AnomalieRessource.objects.all()
     serializer_class=AnomalieRessourceSerializers
+
+class ListAnomalieSignalerParLocalisation(viewsets.ViewSet):
+    def get(self , request , pk):
+        querySet=AnomalieRessource.objects.filter(localisation=pk).all()
+        if querySet.exists():
+            serializer=AnomalieRessourceSerializers(querySet,many=True)
+            return Response(serializer.data)
+        return Response({
+            "message":"pas d' anomalie signaler pour cette Localisation"
+        })
+
+
+class SignalerAnomalieExistante(viewsets.ViewSet):
+    def updatesignaler(self,request,pk):
+        try:
+            query=AnomalieRessource.objects.get(id=pk)
+            if query.etat !='En cours de traitement':
+                serializer=AnomalieRessourceSerializers(instance=query ,data={
+                    "ressource":request.data["ressource"],
+                    "anomalie":request.data["anomalie"],
+                    "nombreSignalement":request.data["nombreSignalement"]+1,
+                    "localisation":request.data["localisation"]
+                })
+                serializer.is_valid(raise_exception=True)
+                serializer.save()
+                return Response(serializer.data)
+        except AnomalieRessource.DoesNotExist:
+                return Response({
+                    "message": "il  y' a pas encore anomalie pour cette ressource"
+                })
+        
+        
+    
+    
+
+
 class RessourceLocalisation(viewsets.ViewSet):
     def get(self ,request ,pk):
         queryset=Ressource.objects.filter(localisation=pk).all()
