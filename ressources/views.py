@@ -65,7 +65,7 @@ class GestResponsable(viewsets.ViewSet):
     def ressourceResponsable(self , request , pk):
         #serializer =UserSerializer(request.user)
         #if serializer.data['role']=='responsable':
-        queryset=Ressource.objects.filter(user=pk).all()
+        queryset=Ressource.objects.filter(responsable=pk).all()
         serializer=RessourceSerializer(queryset,many=True)
         return Response(serializer.data)
     '''return Response({
