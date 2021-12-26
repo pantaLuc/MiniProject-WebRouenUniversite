@@ -40,7 +40,7 @@ d’une salle, distributeur de fournitures sanitaires (savon, essuie-main, etc),
 4. identiﬁer la personne ou le service responsable de la maintenance de la ressource,
 5. eﬀectuer la transmission de ces informations au responsable de la maintenance de la ressource.\n
 Nous avons construit une platforme Pour simplifier le Processus .Cette Page donne la Description des Endpoints a utiliser """,
-terms_of_service="https://www.google.com/policies/terms/",
+terms_of_service="http://sciences-techniques.univ-rouen.fr/master-informatique-genie-de-l-informatique-logicielle-543237.kjsp?RH=1378324428882",
 contact=openapi.Contact(email="luc-perin.panta-pameni@univ-rouen.fr"),
 license=openapi.License(name="Université de Rouen"),
 ),
