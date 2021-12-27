@@ -12,8 +12,11 @@ urlpatterns = [
   path('localisation' , CreerLocalisation.as_view()),
   path('localisation/<int:pk>' , RUDLocalisation.as_view()),
   path('lisLocalisation/' , ListLocalisation.as_view()),
+   path('anomalieExistant/<int:pk>',SignalerAnomalieExistante.as_view({
+       'put':'update',
+   }),name='updateAnomalieExistante'),
+   
   path('signalerAnomalie/', SignalerAnomalie.as_view()),
-  path('anomalieExistant/<int:pk>' , SignalerAnomalieExistante.as_view()),
   path('listeAnomalieLocalisation/<int:pk>',ListAnomalieSignalerParLocalisation.as_view({
       'get':'get',
   })),

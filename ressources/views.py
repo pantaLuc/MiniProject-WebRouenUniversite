@@ -68,9 +68,14 @@ class ListAnomalieSignalerParLocalisation(viewsets.ViewSet):
         })
 
 
-class SignalerAnomalieExistante(generics.RetrieveUpdateAPIView):
-    query=AnomalieRessource.objects.all()
-    serializer_class=AnomalieRessourceSerializers
+class SignalerAnomalieExistante(viewsets.ViewSet):
+    def update(self ,request , pk=None):
+        anomalieRessource=AnomalieRessource.objects.get(id=pk)
+        serializer=AnomalieRessourceSerializers(instance=anomalieRessource ,data=request.data ,partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+
 
     
 class RessourceLocalisation(viewsets.ViewSet):
