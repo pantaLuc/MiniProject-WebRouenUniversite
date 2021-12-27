@@ -68,30 +68,11 @@ class ListAnomalieSignalerParLocalisation(viewsets.ViewSet):
         })
 
 
-class SignalerAnomalieExistante(viewsets.ViewSet):
-    def updatesignaler(self,request,pk):
-        try:
-            query=AnomalieRessource.objects.get(id=pk)
-            if query.etat !='En cours de traitement':
-                serializer=AnomalieRessourceSerializers(instance=query ,data={
-                    "ressource":request.data["ressource"],
-                    "anomalie":request.data["anomalie"],
-                    "nombreSignalement":request.data["nombreSignalement"]+1,
-                    "localisation":request.data["localisation"]
-                })
-                serializer.is_valid(raise_exception=True)
-                serializer.save()
-                return Response(serializer.data)
-        except AnomalieRessource.DoesNotExist:
-                return Response({
-                    "message": "il  y' a pas encore anomalie pour cette ressource"
-                })
-        
-        
-    
-    
+class SignalerAnomalieExistante(generics.RetrieveUpdateAPIView):
+    query=AnomalieRessource.objects.all()
+    serializer_class=AnomalieRessourceSerializers
 
-
+    
 class RessourceLocalisation(viewsets.ViewSet):
     def get(self ,request ,pk):
         queryset=Ressource.objects.filter(localisation=pk).all()
