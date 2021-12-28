@@ -12,7 +12,7 @@ from .serializers import UserSerializer, RegisterSerializer, ChangePasswordSeria
 from django.views.decorators.debug import sensitive_post_parameters
 
 from rest_framework.views import APIView
-
+from django.http import HttpResponse
 # Register API
 class RegisterAPI(generics.GenericAPIView):
     serializer_class = RegisterSerializer
@@ -60,6 +60,12 @@ class ListUser(generics.ListAPIView):
         return Response({
             "message":"vous ne pouvez pas voir tout les responsable "
         })'''
+class DeleteUser(viewsets.ViewSet):
+    def delete(self , request ,pk=None):
+        querySet=User.objects.get(id=pk)
+        querySet.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT) 
+        
          
 from rest_framework import generics, permissions
 
