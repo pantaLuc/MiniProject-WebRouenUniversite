@@ -26,6 +26,12 @@ class ListRessource(viewsets.ViewSet):
         queryset=Ressource.objects.all()
         serializer=RessourceSerializer(queryset ,many=True)
         return Response(serializer.data)
+class ListUserParService(viewsets.ViewSet):
+    def get(self ,request ,pk=None):
+        querySet=Service.objects.get(id=pk)
+        LesUsers=querySet.responsables.all()
+        serializer=ServiceSerializer(querySet)
+        return Response(serializer.data['responsables'])
 
 class CreerAnomalie(generics.CreateAPIView):
     queryset=Anomalie.objects.all()
