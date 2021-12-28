@@ -76,7 +76,15 @@ class SignalerAnomalieExistante(viewsets.ViewSet):
         serializer.save()
         return Response(serializer.data)
 
-
+class ListAnomalies(viewsets.ViewSet):
+    def get (self , request):
+        queryset=Anomalie.objects.all()
+        if queryset.exists():
+            serializer=AnomalieSerializer(queryset,many=True)
+            return Response(serializer.data)
+        return Response({
+            "message":"pas d' anomalies"
+        })
     
 class RessourceLocalisation(viewsets.ViewSet):
     def get(self ,request ,pk):
