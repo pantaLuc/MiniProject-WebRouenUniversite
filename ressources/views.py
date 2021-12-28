@@ -57,9 +57,9 @@ class SignalerAnomalie(generics.CreateAPIView):
     query=AnomalieRessource.objects.all()
     serializer_class=AnomalieRessourceSerializers
 
-class ListAnomalieSignalerParLocalisation(viewsets.ViewSet):
+class ListAnomalieSignalerParRessource(viewsets.ViewSet):
     def get(self , request , pk):
-        querySet=AnomalieRessource.objects.filter(localisation=pk).all()
+        querySet=AnomalieRessource.objects.filter(ressource=pk).all()
         if querySet.exists():
             serializer=AnomalieRessourceSerializers(querySet,many=True)
             return Response(serializer.data)
