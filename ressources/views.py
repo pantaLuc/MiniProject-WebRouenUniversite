@@ -26,6 +26,7 @@ class ListRessource(viewsets.ViewSet):
         queryset=Ressource.objects.all()
         serializer=RessourceSerializer(queryset ,many=True)
         return Response(serializer.data)
+        LesUsers=querySet.responsables.all()
 class ListUserParService(viewsets.ViewSet):
     def get(self ,request ,pk=None):
         querySet=Service.objects.get(id=pk)

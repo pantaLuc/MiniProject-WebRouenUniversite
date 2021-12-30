@@ -1,0 +1,51 @@
+[{
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+        "username": "pantaluc",
+        "email": "pantaluc@gmail.com",
+        "password": "root",
+        "last_name": "Panta",
+        "first_name": "Luc Perin",
+        "role": "admin"
+    }
+},
+
+{
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+        "username": "ichraq",
+        "email": "ichraqelaidich@gmail.com",
+        "password": "ichraq1234",
+        "last_name": "Ichraq",
+        "first_name": "Elaidich",
+        "role": "responsable"
+    }
+},
+{
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+        "username": "meiraF",
+        "email": "meiraFieni@gmail.com",
+        "password": "fieni1234",
+        "last_name": "Fieni",
+        "first_name": "Meira Ama",
+        "role": "responsable"
+    }
+},
+{
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+        "username": "safaeJ",
+        "email": "safaeJeradi@gmail.com",
+        "password": "jerradi1234",
+        "last_name": "Jerradi",
+        "first_name": "safae",
+        "role": "responsable"
+    }
+}
+
+]

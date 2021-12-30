@@ -1,0 +1,51 @@
+[{
+    "model": "ressources.localisation",
+    "pk": 1,
+    "fields":{
+        "code": "U2.2.21",
+        "libelle": "Salle de coworking  ",
+        "description": "salle de travail en groupes  etudiants et enseignats "
+    }
+},
+
+{
+    "model": "ressources.localisation",
+    "pk": 2,
+    "fields":{
+        "code": "U2.2.22",
+        "libelle": "Salle de  TP",
+        "description": "salle avec des Ordinateurs pour les TPs et les Travaux pratiques"
+    }
+},
+
+{
+    "model": "ressources.localisation",
+    "pk": 3,
+    "fields":{
+        "code": "Amphi Sophie Germain",
+        "libelle": "Amphitheatre de  Cours ",
+        "description": "AMphitheatre a l' honneur de la pionnier francaise en Mathematique reconnu apres moultes annnees pour ces travaux en Mathematique "
+    }
+},
+
+{
+    "model": "ressources.localisation",
+    "pk": 4,
+    "fields":{
+        "code": "Amphi Alan Turing",
+        "libelle": "Amphitheatre de  Cours ",
+        "description": "AMphitheatre a l' honneur de l'allemand Alan Turing Pere de l' Informatique Moderne"
+    }
+},
+
+{
+    "model": "ressources.localisation",
+    "pk": 5,
+    "fields":{
+        "code": "U2.1.14",
+        "libelle": "Salle de Travaux  ",
+        "description": "salle avec des Ordinateurs pour les TPs et les Travaux pratiques "
+    }
+}
+
+]

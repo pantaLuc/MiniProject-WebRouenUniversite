@@ -1,0 +1,30 @@
+[{
+    "model": "ressources.service",
+    "pk": 1,
+    "fields":{
+        "nomServ": "Hygiene",
+        "descriptionService": "Responsable du maintient de l' Hygiene",
+        "creer_le": "2021-12-28T17:38:16.050137Z",
+        "responsables": 
+        [
+            3,2
+        ]
+    
+    }
+},
+{
+    "model": "ressources.service",
+    "pk": 1,
+    "fields":{
+        "nomServ": "Informatique",
+        "descriptionService": "Responsable du maintient des equipements Informatique",
+        "creer_le": "2021-12-28T17:38:16.050137Z",
+        "responsables": 
+        [
+            3,2
+        ]
+    
+    }
+}
+
+]
