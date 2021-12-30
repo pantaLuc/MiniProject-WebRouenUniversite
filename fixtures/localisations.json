@@ -24,7 +24,7 @@
     "fields":{
         "code": "Amphi Sophie Germain",
         "libelle": "Amphitheatre de  Cours ",
-        "description": "AMphitheatre a l' honneur de la pionniere francaise   en Mathematique "
+        "description": "En honneur de la pionniere francaise en Mathematique "
     }
 },
 
@@ -44,7 +44,7 @@
     "fields":{
         "code": "U2.1.14",
         "libelle": "Salle de Travaux  ",
-        "description": "salle avec des Ordinateurs pour les TPs et les Travaux pratiques "
+        "description": "salle avec des Ordinateurs pour les TPs  "
     }
 }
 
