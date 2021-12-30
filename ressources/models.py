@@ -5,7 +5,7 @@ from django.db.models.deletion import CASCADE
 #creation des models pour ressources 
 
 class Localisation(models.Model):
-    code = models.CharField(max_length=10, unique = True)
+    code = models.CharField(max_length=30, unique = True)
     libelle = models.CharField(max_length=255)
     description= models.CharField(max_length=255)
     def __str__(self):

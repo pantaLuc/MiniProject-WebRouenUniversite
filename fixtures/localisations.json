@@ -24,7 +24,7 @@
     "fields":{
         "code": "Amphi Sophie Germain",
         "libelle": "Amphitheatre de  Cours ",
-        "description": "En honneur de la pionniere francaise en Mathematique "
+        "description": "AMphitheatre a l' honneur de la pionnier francaise en Mathematique reconnu apres moultes annnees pour ces travaux en Mathematique "
     }
 },
 
@@ -34,7 +34,7 @@
     "fields":{
         "code": "Amphi Alan Turing",
         "libelle": "Amphitheatre de  Cours ",
-        "description": "AMphitheatre a l' honneur de l'allemand Alan Turing "
+        "description": "AMphitheatre a l' honneur de l'allemand Alan Turing Pere de l' Informatique Moderne"
     }
 },
 
@@ -44,7 +44,7 @@
     "fields":{
         "code": "U2.1.14",
         "libelle": "Salle de Travaux  ",
-        "description": "salle avec des Ordinateurs pour les TPs  "
+        "description": "salle avec des Ordinateurs pour les TPs et les Travaux pratiques "
     }
 }
 
