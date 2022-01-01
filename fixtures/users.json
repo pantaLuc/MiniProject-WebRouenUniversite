@@ -4,7 +4,7 @@
     "fields": {
         "username": "pantaluc",
         "email": "pantaluc@gmail.com",
-        "password": "root",
+        "password": "pbkdf2_sha256$216000$q1IDu4qH6dcj$3bclzVTinXC7ZB89iI/GfbfNsqYvnaK7phMjTWFxt5A=",
         "last_name": "Panta",
         "first_name": "Luc Perin",
         "role": "admin"
@@ -17,7 +17,7 @@
     "fields": {
         "username": "ichraq",
         "email": "ichraqelaidich@gmail.com",
-        "password": "ichraq1234",
+        "password": "pbkdf2_sha256$216000$nThFrgb0kel3$w7sSS8na4nYjcTuXEQoWqusnush/q8ll/GHjcOXZvUY=",
         "last_name": "Ichraq",
         "first_name": "Elaidich",
         "role": "responsable"
@@ -27,9 +27,9 @@
     "model": "users.user",
     "pk": 3,
     "fields": {
-        "username": "meiraF",
+        "username": "meira",
         "email": "meiraFieni@gmail.com",
-        "password": "fieni1234",
+        "password": "pbkdf2_sha256$216000$Xo1nfN5ppIwl$MocgTVrI3PzycgDCUbWHQVF3sPxJxCIk3ESKSGi7tHQ=",
         "last_name": "Fieni",
         "first_name": "Meira Ama",
         "role": "responsable"
@@ -39,9 +39,9 @@
     "model": "users.user",
     "pk": 4,
     "fields": {
-        "username": "safaeJ",
+        "username": "safae",
         "email": "safaeJeradi@gmail.com",
-        "password": "jerradi1234",
+        "password": "pbkdf2_sha256$216000$B6GvhTq0yDrw$8USkQGgYPFKM0jiinhw+utMEU2yPWvYuZVBiNmat6To=",
         "last_name": "Jerradi",
         "first_name": "safae",
         "role": "responsable"
